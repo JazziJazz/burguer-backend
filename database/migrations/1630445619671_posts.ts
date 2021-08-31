@@ -9,8 +9,13 @@ export default class Posts extends BaseSchema {
 
       table.string("title").notNullable().unique();
       table.text("content", "longtext").notNullable();
-
-      
+      table
+        .integer("author_id")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onUpdate("CASCADE")
+        .onDelete("CASCADE");
 
       table.timestamp("created_at", { useTz: true });
       table.timestamp("updated_at", { useTz: true });
