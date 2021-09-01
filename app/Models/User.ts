@@ -28,7 +28,7 @@ export default class User extends BaseModel {
   public rememberMeToken?: string;
 
   @hasMany(() => UserKey)
-  public key: HasMany<typeof UserKey>
+  public key: HasMany<typeof UserKey>;
 
   @column.dateTime({
     autoCreate: true,
