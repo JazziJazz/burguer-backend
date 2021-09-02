@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import Hash from "@ioc:Adonis/Core/Hash";
-import { column, beforeSave, BaseModel, hasMany, HasMany } from "@ioc:Adonis/Lucid/Orm";
+import { column, beforeSave, BaseModel, hasMany, HasMany, CherryPick } from "@ioc:Adonis/Lucid/Orm";
 import UserKey from "./UserKey";
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -23,6 +23,9 @@ export default class User extends BaseModel {
 
   @column()
   public type: "normal" | "admin";
+
+  @column()
+  public confirmed: true | false;
 
   @column()
   public rememberMeToken?: string;
@@ -52,5 +55,20 @@ export default class User extends BaseModel {
     if (user.$dirty.password) {
       user.password = await Hash.make(user.password);
     }
+  }
+
+  public serialize(cherryPick?: CherryPick) {
+    return {
+      ...this.serializeAttributes(cherryPick?.fields, false),
+      ...this.serializeComputed(cherryPick?.fields),
+      ...this.serializeRelations(
+        {
+          author: {
+            fields: ["id", "name", "email", "type"]
+          }
+        },
+        false
+      )
+    };
   }
 }

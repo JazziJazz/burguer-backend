@@ -13,6 +13,7 @@ export default class UsersSchema extends BaseSchema {
       table.string("email").unique().notNullable();
       table.string("password", 180).notNullable();
       table.enu("type", ["normal", "admin"]).defaultTo("normal").notNullable();
+      table.enu("confirmed", [true, false]).defaultTo(false).notNullable();
       table.string("remember_me_token").nullable();
 
       table.timestamp("created_at", { useTz: true }).notNullable();

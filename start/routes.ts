@@ -12,8 +12,9 @@ Route.get("/register-confirmation", async ({ view }) => {
 
 /* Rota de registro de usuário */
 Route.group(() => {
-  Route.post("", "User/RegistersController.store");
-}).prefix("/register");
+  Route.post("/register", "User/RegistersController.store");
+  Route.get("/register/:key", "User/RegistersController.show");
+}).prefix("/users");
 
 
 /* Rota de autenticação de usuário */
