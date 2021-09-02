@@ -1,19 +1,27 @@
 import Route from "@ioc:Adonis/Core/Route";
 
+
 Route.get("/", async ({ view }) => {
   return view.render("home");
 });
+
+Route.get("/register-confirmation", async ({ view }) => {
+  return view.render("emails/register");
+});
+
 
 /* Rota de registro de usuário */
 Route.group(() => {
   Route.post("", "User/RegistersController.store");
 }).prefix("/register");
 
+
 /* Rota de autenticação de usuário */
 Route.group(() => {
   Route.post("/", "AuthController.store");
   Route.delete("/", "AuthController.destroy");
 }).prefix("/auth");
+
 
 /* Rota de gerenciamento de postagens */
 Route.group(() => {
