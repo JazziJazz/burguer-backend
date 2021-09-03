@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @include('partials/mail-register')
+</head>
+<body>
+    <div class="content">
+        <header>
+        </header>
+
+        <section>
+            <div class="first-column"></div>
+            <div class="second-column">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="Imagem logo" srcset="">
+
+                <h1>Confirme o seu e-mail!</h1>
+
+                <p>Para garantir a segurança dos seus dados e resguardar o seu email nós utilizados um sistema de confirmação de cadastro por email. Clique no link abaixo e confirme sua conta para que você possa se logar na sua conta ZêEle Burguer.</p>
+
+                <a href="{{ linkToEmail }}" target="_blank" class="button">Confirmar</a>
+            </div>
+            <div class="third-column"></div>
+        </section>
+
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
