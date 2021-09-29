@@ -20,6 +20,7 @@ export default class RegistersController {
 
       user.name = data.name;
       user.cpf = data.cpf;
+      user.rg = data.rg;
       user.email = data.email;
       user.password = data.password;
 

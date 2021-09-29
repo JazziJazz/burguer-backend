@@ -23,6 +23,9 @@ export default class User extends BaseModel {
   public cpf: string;
 
   @column()
+  public rg: string;
+
+  @column()
   public email: string;
 
   @column({ serializeAs: null })

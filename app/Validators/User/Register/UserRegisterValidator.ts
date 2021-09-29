@@ -26,6 +26,7 @@ export class UserRegisterValidator {
   public schema = schema.create({
     name: schema.string({ trim: true }),
     cpf: schema.string({ trim: true }, [rules.unique({ table: "users", column: "cpf" })]),
+    rg: schema.string({ trim: true }, [rules.unique({ table: "users", column: "rg" })]),
     email: schema.string({ trim: true }, [
       rules.unique({ table: "users", column: "email" }),
       rules.email()

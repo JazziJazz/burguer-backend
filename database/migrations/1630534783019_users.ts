@@ -9,6 +9,7 @@ export default class UsersSchema extends BaseSchema {
 
       table.string("name").notNullable();
       table.string("cpf", 14).unique().notNullable();
+      table.string("rg", 12).unique().notNullable();
       table.string("email").unique().notNullable();
       table.string("password", 180).notNullable();
       table.enu("type", ["normal", "admin"]).defaultTo("normal").notNullable();
