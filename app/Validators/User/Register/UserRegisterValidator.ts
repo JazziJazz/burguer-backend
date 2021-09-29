@@ -25,13 +25,17 @@ export class UserRegisterValidator {
    */
   public schema = schema.create({
     name: schema.string({ trim: true }),
-    date_of_birth: schema.string({ trim: true }),
     cpf: schema.string({ trim: true }, [rules.unique({ table: "users", column: "cpf" })]),
     email: schema.string({ trim: true }, [
       rules.unique({ table: "users", column: "email" }),
       rules.email()
     ]),
     password: schema.string({ trim: true }),
+    city: schema.string({ trim: true }),
+    uf: schema.string({ trim: true }),
+    cep: schema.string({ trim: true }),
+    address: schema.string({ trim: true }),
+    number: schema.number(),
     redirectUrl: schema.string({ trim: true })
   });
 

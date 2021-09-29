@@ -19,12 +19,23 @@ export default class RegistersController {
       const user = new User();
 
       user.name = data.name;
-      user.dateOfBirth = data.date_of_birth;
       user.cpf = data.cpf;
       user.email = data.email;
       user.password = data.password;
 
+      await user.related("address").firstOrCreate(
+        {},
+        {
+          city: data.city,
+          uf: data.uf,
+          cep: data.cep,
+          address: data.address,
+          number: data.number
+        }
+      );
+
       user.useTransaction(trx);
+
       await user.save();
 
       /* Utilizamos a biblioteca faker para criar um novo dado do tipo identificador único universal

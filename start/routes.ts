@@ -11,14 +11,14 @@ Route.get("/register-confirmation", async ({ view }) => {
 /* Rota de controle do usuário */
 Route.group(() => {
   // Rotas de registro do usuário.
-  Route.post("/register", "User/RegistersController.store");
-  Route.get("/register/:key", "User/RegistersController.show");
+  Route.post("/register", "Register/RegistersController.store");
+  Route.get("/register/:key", "Register/RegistersController.show");
 
   // Rotas de recuperação de cadastro.
   Route.post("/forgotten-password", "User/ForgotPasswordsController.store");
   Route.get("/forgotten-password/:key", "User/ForgotPasswordsController.show");
   Route.put("/forgotten-password", "User/ForgotPasswordsController.update");
-}).prefix("/users");
+});
 
 /* Rota de autenticação de usuário */
 Route.group(() => {

@@ -8,13 +8,11 @@ export default class UsersSchema extends BaseSchema {
       table.increments("id").primary();
 
       table.string("name").notNullable();
-      table.string("date_of_birth", 10).notNullable();
       table.string("cpf", 14).unique().notNullable();
       table.string("email").unique().notNullable();
       table.string("password", 180).notNullable();
       table.enu("type", ["normal", "admin"]).defaultTo("normal").notNullable();
       table.enu("confirmed", [true, false]).defaultTo(false).notNullable();
-      table.string("remember_me_token").nullable();
 
       table.timestamp("created_at", { useTz: true }).notNullable();
       table.timestamp("updated_at", { useTz: true }).notNullable();

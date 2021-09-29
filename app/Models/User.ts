@@ -1,16 +1,23 @@
 import { DateTime } from "luxon";
 import Hash from "@ioc:Adonis/Core/Hash";
-import { column, beforeSave, BaseModel, hasMany, HasMany, CherryPick } from "@ioc:Adonis/Lucid/Orm";
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasMany,
+  HasMany,
+  hasOne,
+  HasOne,
+  CherryPick
+} from "@ioc:Adonis/Lucid/Orm";
 import UserKey from "./UserKey";
+import Address from "./Address";
 export default class User extends BaseModel {
   @column({ isPrimary: true })
   public id: number;
 
   @column()
   public name: string;
-
-  @column({ columnName: "date_of_birth" })
-  public dateOfBirth: string;
 
   @column()
   public cpf: string;
@@ -27,11 +34,11 @@ export default class User extends BaseModel {
   @column()
   public confirmed: true | false;
 
-  @column()
-  public rememberMeToken?: string;
-
   @hasMany(() => UserKey)
   public key: HasMany<typeof UserKey>;
+
+  @hasOne(() => Address)
+  public address: HasOne<typeof Address>;
 
   @column.dateTime({
     autoCreate: true,
