@@ -26,6 +26,12 @@ export default class User extends BaseModel {
   public rg: string;
 
   @column()
+  public telFixo: string;
+
+  @column()
+  public telCelular: string;
+
+  @column()
   public email: string;
 
   @column({ serializeAs: null })

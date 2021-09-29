@@ -27,6 +27,8 @@ export class UserRegisterValidator {
     name: schema.string({ trim: true }),
     cpf: schema.string({ trim: true }, [rules.unique({ table: "users", column: "cpf" })]),
     rg: schema.string({ trim: true }, [rules.unique({ table: "users", column: "rg" })]),
+    telFixo: schema.string({ trim: true }),
+    telCelular: schema.string({ trim: true }),
     email: schema.string({ trim: true }, [
       rules.unique({ table: "users", column: "email" }),
       rules.email()
